@@ -25,16 +25,15 @@ namespace GuessThatNumber
             //Here i'm printing out a question to ask the user to guess a number between 1 and 100.
             Console.WriteLine("Guess a number between 1 and 100. What's your first guess?");
             var input = Console.ReadLine();
-            var turnNum = Convert.ToInt32(input);
+            var nowNum = Convert.ToInt32(input);
             var attempts = 0;
-            var coldHot = turnNum;
-            while (turnNum != cpuNum)
+            var coldHot = nowNum;
+            while (nowNum != cpuNum)
             {
-                if (turnNum < cpuNum)
+                if (nowNum < cpuNum)
                 {
                     Console.WriteLine("Not quite , you need to go a bit higher!");
-                     input = Console.ReadLine();
-                    //takes user input and converts it from a string to an interger
+                    
                     nowNum = Convert.ToInt32(input);
                     //adds a count to the attempts counter
                     attempts = attempts + 1;
@@ -43,44 +42,49 @@ namespace GuessThatNumber
                     {
                         Console.WriteLine("You're getting warm!");
                     }
-                    if(cpuNum - turnNum > 60 )
+                    if(cpuNum - nowNum > 60 )
                     {
                         Console.WriteLine("You're cold!");
                     }
                 }
                 //here I am creating an else if statement to 
-                else if (turnNum > cpuNum)
+                else if (nowNum > cpuNum)
                 {
-                    //This will print a line that says you're too low and to try again
+                    
                     Console.WriteLine("Nope! You're too high try again!");
                     //creates another blank line ready for user input
-                    input = Console.ReadLine();
-                    // Here I am taking an user input and converting  it from a string to an interger
-                    turnNum = Convert.ToInt32(input);
-                    // This adds a count to the attempts counter
+               
                     attempts = attempts + 1;
-                    coldHot = turnNum;
-                    if (cpuNum - turnNum < 20)
+                    coldHot = nowNum;
+                    if (cpuNum - nowNum < 20)
                     {
                         Console.WriteLine("You're getting warm!");
                     }
-                    if (cpuNum - turnNum> 60)
+                    if (cpuNum - nowNum> 60)
                     {
                         Console.WriteLine("You're cold!");
+                      
+                        // Here I am taking an user input and converting  it from a string to an interger
+                        
+                   
                     }
                 }
-               
-            }
-            //This prints a confrimation of the number has been found
+
+                input = Console.ReadLine();
+                nowNum = Convert.ToInt32(input);
+            } 
+            // Here I am taking an user input and converting  it from a string to an interger
+                        
+            //Here I  print a confrimation of the number has been found
             Console.WriteLine("Yes! The number is: " + cpuNum);
-            // This prints a line telling you your attempts and giving the number of attempts.
+            // Here I print a line telling you your attempts and giving the number of attempts.
             Console.WriteLine("Your Attempts" + attempts);
-            // This prints a line that asks if you would like to play again.
+            //Here I print a line that asks if you would like to play again.
             Console.WriteLine("Would you like to play again?");
-            //This takes the input choice and lets the user type in their choice.
+           
             var choice = Console.ReadLine();
-            // This says that 
-            if (choice != "no")
+            // This says that when asked if you would like to play again and the answer is yes whether lowercase or not will play again. 
+            if (choice.ToLower() == "yes")
             {
                 GuessNumber();
             }
@@ -92,7 +96,3 @@ namespace GuessThatNumber
             
 
            
-
-        }
-    }
-}
